@@ -152,6 +152,100 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-第二篇博客-了解各种服务器软件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2026/06/28/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2-%E4%BA%86%E8%A7%A3%E5%90%84%E7%A7%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BD%AF%E4%BB%B6/">第二篇博客-了解各种服务器软件</a>
+    </h1>
+  
+
+        
+        <a href="/2026/06/28/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2-%E4%BA%86%E8%A7%A3%E5%90%84%E7%A7%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BD%AF%E4%BB%B6/" class="archive-article-date">
+  	<time datetime="2026-06-28T06:06:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2026-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="了解服务器软件"><a href="#了解服务器软件" class="headerlink" title="了解服务器软件"></a>了解服务器软件</h1><p>本篇参考总结了B站UP主CodeSheep于2020-3-31发布的科普视频，具体链接附在最后。因为与前一篇的创建博客有一点相关性，以及我个人在本科实验中也涉及过wordpress动态博客，tomcat, Appche2的一些安全实验，所以在这里总结一下。</p>
+<h2 id="1-服务种类"><a href="#1-服务种类" class="headerlink" title="1.服务种类"></a>1.服务种类</h2><p>主要分为两种：静态服务以及动态服务。</p>
+<ul>
+<li>静态服务：主要提供静态资源，不同用户访问到的资源相同</li>
+<li>动态服务：提供动态资源，面对不同情况拿到变化的资源，可以理解为不同用户访问到的资源不同</li>
+</ul>
+<p>我认为这两个概念可以类比于我们之前学习的静态博客以及动态博客，hexo博客就是静态博客，不同用户访问到的都是同一个页面，而wordpress是动态博客，比如你作为博客作者拿到的页面与阅读者不一样。</p>
+<h2 id="2-有关服务器的三个基本概念"><a href="#2-有关服务器的三个基本概念" class="headerlink" title="2.有关服务器的三个基本概念"></a>2.有关服务器的三个基本概念</h2><p>web服务器广义上来说，就是响应用户的需求，然后提供服务，当下所有的服务器软件都可以称之为web服务器软件。</p>
+<p>现在的Web服务器的应用层通讯协议主要是HTTP协议，Web服务器和HTTP服务器几乎对等</p>
+<p>HTTP服务器通过HTTP协议将服务器上的资源传输给客户端，侧重于静态资源的支持，可将其视为静态服务器</p>
+<p>应用服务器，特定应用的承载容器，运行时需要特定环境的支持，如Tomcat运行时需要Java的支持，也可以称作动态服务器、动态容器等。</p>
+<p>应用服务器可以降维，当作静态服务器使用，但一般不会这样使用。</p>
+<h2 id="3-具体服务器软件"><a href="#3-具体服务器软件" class="headerlink" title="3.具体服务器软件"></a>3.具体服务器软件</h2><p>下面的服务器软件主要分为两大类，静态服务器软件以及动态服务器软件，其中包括开源的和商用的</p>
+<ul>
+<li>Nginx：典型的静态服务器，可做反向代理、负载均衡，一般放在最前面直面用户，和后端Tomcat打配合；纯C写的，性能贼高、内存消耗极少、稳定性也相当好，互联网公司重度使用</li>
+<li>Tengine：阿里出品，基于Nginx服务器做的改造(加强和封装)，对大流量场景做了很多高级功能，性能、稳定性优秀</li>
+<li>Apache http server：也是静态服务器，但是不如Nginx</li>
+<li>IIS：微软开发，只能用在Windows下，具有应用服务器能力的http服务器</li>
+</ul>
+<p>下面是动态服务器软件：</p>
+<ul>
+<li>Tomcat：Apache出品，典型的应用服务器软件，符合Servlet标准的应用容器，也可以提供http服务，但一般不会作为http服务器；是Spring Boot框架默认的内置服务器</li>
+<li>Jetty：跟Tomcat是一个性质的东西，符合Servlet标准的应用容器，也是Spring Boot框架支持的服务器，但不是默认的</li>
+<li>Undertow：红帽子出品，跟Tomcat、Jetty一样也是Spring Boot框架支持的服务器，但不是默认的；高并发时性能优于Tomcat、Jetty</li>
+</ul>
+<p>几款商用重量级的服务器软件：</p>
+<ol>
+<li>JBoss(从8版开始更名为WildFly)：不仅是Servlet应用容器，更是EJB的应用容器，整套JavaEE框架部署的解决方案</li>
+<li>WebLogic：Oracle公司出品，用于部署企业级JavaEE应用，全能型，几乎支持JavaEE所有的应用规范</li>
+<li>WebSphere：IBM公司出品，支持更多JavaEE的应用规范的综合应用服务器</li>
+</ol>
+<h2 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4.参考文献"></a>4.参考文献</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ra4y1t7rs/?spm_id_from=333.1387.collection.video_card.click&vd_source=cb556cbf1df3aa77e1a95ffdf85c5e50">https://www.bilibili.com/video/BV1ra4y1t7rs/?spm_id_from=333.1387.collection.video_card.click&amp;vd_source=cb556cbf1df3aa77e1a95ffdf85c5e50</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2026/06/28/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2-%E4%BA%86%E8%A7%A3%E5%90%84%E7%A7%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BD%AF%E4%BB%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-第一篇博客-创建your-own-blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
